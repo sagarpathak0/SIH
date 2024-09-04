@@ -5,11 +5,14 @@ const session = require('express-session');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
 require('./config/passport')(passport);
-
+const cors = require('cors');
 dotenv.config();
 
 const app = express();
 
+app.use(cors({
+    origin: "*",
+}));
 
 app.use(express.json());
 app.use(session({ secret: process.env.JWT_SECRET, resave: true, saveUninitialized: true }));

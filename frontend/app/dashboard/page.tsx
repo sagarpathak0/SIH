@@ -1,13 +1,20 @@
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
-const Dashboard = async () => {
+const Dashboard = () => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
-  return (
-    <div>
-      <h1>Dashboard</h1>
-      <p>Welcome</p>
-      <button onClick={() => fetch('/api/auth/logout').then(() => window.location.href = '/')}>Sign out</button>
-    </div>
-  );
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/login');
+    }
+  }, [status]);
+
+  if (status === 'loading') return <p>Loading...</p>;
+
+  return <div>Welcome to your dashboard, {session?.user?.name}</div>;
 };
 
 export default Dashboard;
