@@ -6,7 +6,7 @@ export async function POST(request: Request) {
 
   try {
     // Send data to your backend to create a new user
-    const response = await axios.post('http://localhost:5000/api/signup', {
+    const response = await axios.post('http://localhost:5000/auth/signup', {
         name,
         email,
         password,
