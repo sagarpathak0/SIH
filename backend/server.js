@@ -4,6 +4,7 @@ const passport = require('passport');
 const session = require('express-session');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
+const testRoutes = require('./routes/testRoutes')
 require('./config/passport')(passport);
 const cors = require('cors');
 dotenv.config();
@@ -27,6 +28,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 
 app.use('/auth', authRoutes);
+app.use('/test', testRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
