@@ -31,7 +31,7 @@ const LoginPage = () => {
             <label className="block text-sm font-medium text-gray-700">Email</label>
             <input
               type="email"
-              className="mt-1 p-2 w-full border rounded-md"
+              className="mt-1 p-2 w-full border rounded-md text-black"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -41,7 +41,7 @@ const LoginPage = () => {
             <label className="block text-sm font-medium text-gray-700">Password</label>
             <input
               type="password"
-              className="mt-1 p-2 w-full border rounded-md"
+              className="mt-1 p-2 w-full border rounded-md text-black"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
